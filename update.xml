@@ -1,5 +1,14 @@
 <updates>
 <update>
+        <id>13</id>
+        <url>https://github.com/psieg/Lightpack/releases</url>
+        <pkgUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.21/Prismatik.unofficial.64bit.Setup.5.11.2.21.exe</pkgUrl>
+        <sigUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.21/Prismatik.unofficial.64bit.Setup.5.11.2.21.exe.updater_signature</sigUrl>
+        <title>Version 5.11.2.21 is available</title>
+        <text>* Fix AntiVirus false positive</text>
+        <softwareVersion>eq5.11.2.20</softwareVersion>
+</update>
+<update>
         <id>12</id>
         <url>https://github.com/psieg/Lightpack/releases</url>
         <pkgUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.19/Prismatik.unofficial.64bit.Setup.5.11.2.19.exe</pkgUrl>
