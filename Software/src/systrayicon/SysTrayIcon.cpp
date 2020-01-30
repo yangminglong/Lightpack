@@ -227,7 +227,7 @@ void SysTrayIcon::onCheckUpdate_Finished()
 			_qsystray->showMessage("Multiple updates are available", "Click to open the downloads page");
 		} else {
 			UpdateInfo& update = updates.last();
-#ifdef Q_OS_WIN
+#ifdef FALSE
 			if (Settings::isInstallUpdatesEnabled() && !update.pkgUrl.isEmpty() && !update.sigUrl.isEmpty()) {
 				_trayMessage = SysTrayIcon::MessageNoAction;
 				_trayMsgUrl = QUrl("");
