@@ -1,5 +1,16 @@
 <updates>
 <update>
+        <id>14</id>
+        <url>https://github.com/psieg/Lightpack/releases</url>
+        <pkgUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.22/Prismatik.unofficial.64bit.Setup.5.11.2.22.exe</pkgUrl>
+        <sigUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.22/Prismatik.unofficial.64bit.Setup.5.11.2.22.exe.updater_signature</sigUrl>
+        <title>Version 5.11.2.22 is available</title>
+        <text>* Support for UDP devices
+* Pulseaudio Sound Visualizer
+* Tweaks for Adalight/Adrulight</text>
+        <softwareVersion>lt5.11.2.22</softwareVersion>
+</update>
+<update>
         <id>13</id>
         <url>https://github.com/psieg/Lightpack/releases</url>
         <pkgUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.21/Prismatik.unofficial.64bit.Setup.5.11.2.21.exe</pkgUrl>
