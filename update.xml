@@ -1,5 +1,16 @@
 <updates>
 <update>
+        <id>15</id>
+        <url>https://github.com/psieg/Lightpack/releases</url>
+        <pkgUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.23/Prismatik.unofficial.64bit.Setup.5.11.2.23.exe</pkgUrl>
+        <sigUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.23/Prismatik.unofficial.64bit.Setup.5.11.2.23.exe.updater_signature</sigUrl>
+        <title>Version 5.11.2.23 is available</title>
+        <text>* Reduce CPU load
+* Improved Zone Distributiors
+* Fix Windows Night Light</text>
+        <softwareVersion>lt5.11.2.23</softwareVersion>
+</update>
+<update>
         <id>14</id>
         <url>https://github.com/psieg/Lightpack/releases</url>
         <pkgUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.22/Prismatik.unofficial.64bit.Setup.5.11.2.22.exe</pkgUrl>
