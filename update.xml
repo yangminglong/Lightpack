@@ -1,5 +1,14 @@
 <updates>
 <update>
+        <id>18</id>
+        <url>https://github.com/psieg/Lightpack/releases</url>
+        <pkgUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.27/Prismatik.unofficial.64bit.Setup.5.11.2.27.exe</pkgUrl>
+        <sigUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.27/Prismatik.unofficial.64bit.Setup.5.11.2.27.exe.updater_signature</sigUrl>
+        <title>Version 5.11.2.27 is available</title>
+        <text>* Improved zone placement wizard</text>
+        <softwareVersion>lt5.11.2.27</softwareVersion>
+</update>
+<update>
         <id>17</id>
         <url>https://github.com/psieg/Lightpack/releases</url>
         <pkgUrl>https://github.com/psieg/Lightpack/releases/download/5.11.2.25/Prismatik.unofficial.64bit.Setup.5.11.2.25.exe</pkgUrl>
