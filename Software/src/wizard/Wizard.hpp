@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Wizard.hpp
  *
  *	Created on: 10/22/2013
@@ -28,6 +28,7 @@
 #define WIZARD_HPP
 
 #include <QApplication>
+#include <QEvent>
 #include <QWizard>
 #include "SettingsAwareTrait.hpp"
 
@@ -54,6 +55,8 @@ public:
 	explicit Wizard(bool isInitFromSettings, QWidget *parent = 0);
 	~Wizard();
 
+protected:
+    void changeEvent(QEvent *event);
 public slots:
 
 private:

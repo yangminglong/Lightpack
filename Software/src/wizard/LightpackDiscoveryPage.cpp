@@ -1,4 +1,4 @@
-/*
+﻿/*
  * LightpacksDiscoveryPage.cpp
  *
  *	Created on: 10/23/2013
@@ -80,6 +80,17 @@ int LightpackDiscoveryPage::nextId() const {
 	if (_ui->rbLightpackSelected->isChecked())
 		return Page_ChooseProfile;
 	else
-		return Page_ChooseDevice;
+        return Page_ChooseDevice;
+}
+
+void LightpackDiscoveryPage::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        _ui->retranslateUi(this);
+        return;
+    }
+
+    QWizardPage::changeEvent(event);
+    return;
 }
 

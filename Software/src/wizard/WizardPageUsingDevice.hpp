@@ -1,4 +1,4 @@
-/*
+﻿/*
 * ZoneConfiguration.hpp
 *
 *	Created on: 10/25/2013
@@ -27,6 +27,7 @@
 #ifndef WIZARDPAGEUSINGDEVICE_HPP
 #define WIZARDPAGEUSINGDEVICE_HPP
 
+#include <QEvent>
 #include <QWizardPage>
 #include "SettingsAwareTrait.hpp"
 
@@ -46,7 +47,6 @@ protected slots:
 	void turnLightsOn(QRgb color);
 	void turnLightsOff();
 	void turnLightsOff(int);
-
 
 protected:
 	void resetDeviceSettings();

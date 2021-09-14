@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ConfigureDevicePowerPage.hpp
  *
  *	Created on: 15/02/2020
@@ -27,6 +27,7 @@
 #ifndef CONFIGUREDEVICEPOWERPAGE_HPP
 #define CONFIGUREDEVICEPOWERPAGE_HPP
 
+#include <QEvent>
 #include <QWizardPage>
 #include "SettingsAwareTrait.hpp"
 
@@ -45,6 +46,8 @@ public:
 protected:
 	void initializePage();
 	bool validatePage();
+protected:
+    void changeEvent(QEvent *event);
 
 private:
 	Ui::ConfigureDevicePowerPage*ui;

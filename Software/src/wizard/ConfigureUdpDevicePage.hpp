@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ConfigureUdpDevicePage.hpp
  *
  *	Created on: 15/02/2020
@@ -27,6 +27,7 @@
 #ifndef CONFIGUREUDPDEVICEPAGE_HPP
 #define CONFIGUREUDPDEVICEPAGE_HPP
 
+#include <QEvent>
 #include <QWizardPage>
 #include "SettingsAwareTrait.hpp"
 
@@ -46,9 +47,11 @@ protected:
 	void initializePage();
 	void cleanupPage();
 	bool validatePage();
+protected:
+    void changeEvent(QEvent *event);
 
 private:
-	Ui::ConfigureUdpDevicePage*ui;
+	Ui::ConfigureUdpDevicePage *ui;
 };
 
 #endif // CONFIGUREUDPDEVICEPAGE_HPP

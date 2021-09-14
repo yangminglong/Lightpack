@@ -1,4 +1,4 @@
-/*
+﻿/*
  * SelectProfilePage.cpp
  *
  *	Created on: 11/1/2013
@@ -95,7 +95,18 @@ bool SelectProfilePage::validatePage()
 {
 	if(Settings::getCurrentProfileName().compare(ui->cbProfile->currentText()) != 0)
 		Settings::loadOrCreateProfile(ui->cbProfile->currentText());
-	return true;
+    return true;
+}
+
+void SelectProfilePage::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        return;
+    }
+
+    QWizardPage::changeEvent(event);
+    return;
 }
 
 void SelectProfilePage::onAddProfile_clicked()

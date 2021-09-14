@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Wizard.cpp
  *
  *	Created on: 10/22/2013
@@ -52,6 +52,7 @@ Wizard::Wizard(bool isInitFromSettings, QWidget *parent) :
 	this->setPage(Page_ZonePlacement, new ZonePlacementPage(_isInitFromSettings, _transSettings));
 	this->setPage(Page_ConfigureDevicePower, new ConfigureDevicePowerPage(_isInitFromSettings, _transSettings));
 	this->setPage(Page_GlobalColorCoef, new GlobalColorCoefPage(_isInitFromSettings, _transSettings));
+
 }
 
 Wizard::~Wizard()
@@ -59,5 +60,16 @@ Wizard::~Wizard()
 //	if (_transSettings->ledDevice != NULL)
 //		delete _transSettings->ledDevice;
 	delete _transSettings;
-	delete _ui;
+    delete _ui;
+}
+
+void Wizard::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        _ui->retranslateUi(this);
+        return;
+    }
+
+    QWizard::changeEvent(event);
+    return;
 }

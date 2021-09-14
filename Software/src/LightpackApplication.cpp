@@ -1,4 +1,4 @@
-/*
+﻿/*
  * LightpackApplication.cpp
  *
  *	Created on: 06.09.2011
@@ -47,6 +47,9 @@
 using namespace std;
 using namespace SettingsScope;
 
+QTranslator* LightpackApplication::m_translator = nullptr;
+QMap<QString, QString> LightpackApplication::m_languageMap;
+
 LightpackApplication::LightpackApplication(int &argc, char **argv)
 	: QtSingleApplication(argc, argv)
 {
@@ -56,6 +59,7 @@ LightpackApplication::LightpackApplication(int &argc, char **argv)
 
 LightpackApplication::~LightpackApplication()
 {
+
 
 	m_moodlampManager->start(false);
 	m_grabManager->start(false);
@@ -92,6 +96,7 @@ LightpackApplication::~LightpackApplication()
 	m_pluginManager = NULL;
 	delete m_pluginInterface;
 	m_pluginInterface = NULL;
+
 }
 
 const QString& LightpackApplication::configDir() {
@@ -156,6 +161,13 @@ void LightpackApplication::initializeAll()
 	setOrganizationName(QStringLiteral("Woodenshark LLC"));
 	setApplicationVersion(QStringLiteral(VERSION_STR));
 	setQuitOnLastWindowClosed(false);
+
+	m_languageMap.insert("en_EN", QStringLiteral("English"));
+	m_languageMap.insert("ru_RU", QStringLiteral("Russian"));
+	m_languageMap.insert("uk_UA", QStringLiteral("Ukrainian"));
+	m_languageMap.insert("zh_CN", QStringLiteral("中文（简体）"));
+
+	loadLanguages(Settings::getLanguage());
 
 	m_noGui = false;
 	m_isSessionLocked = false;
@@ -243,7 +255,7 @@ void LightpackApplication::initializeAll()
 void LightpackApplication::runWizardLoop(bool isInitFromSettings)
 {
 	Wizard *w = new Wizard(isInitFromSettings);
-	connect(w, &Wizard::finished, this, &LightpackApplication::quitFromWizard);
+    connect(w, &Wizard::finished, this, &LightpackApplication::quitFromWizard);
 	w->setWindowFlags(Qt::WindowStaysOnTopHint);
 	w->show();
 	this->exec();
@@ -383,6 +395,31 @@ void LightpackApplication::processMessageWithNoGui(const QString& message)
 {
 	qWarning() << Q_FUNC_INFO << "Cannot process " << message << " with --nogui. Use the network API as an alternative.";
 }
+
+void LightpackApplication::loadLanguages(const QString& locale)
+{
+	if (m_translator != nullptr) {
+		qApp->removeTranslator(m_translator);
+		delete m_translator;
+		m_translator = nullptr;
+	}
+
+	if (locale == QStringLiteral("en_EN") /* default no need to translate */) {
+		DEBUG_LOW_LEVEL << "Translation removed, using default locale" << locale;
+		return;
+	}
+
+	const QString pathToLocale = QStringLiteral(":/translations/%1").arg(m_languageMap.contains(locale) ? locale : QLocale::system().name());
+	m_translator = new QTranslator(qApp);
+	if (m_translator->load(pathToLocale)) {
+		DEBUG_LOW_LEVEL << Q_FUNC_INFO << "Load translation for locale" << locale;
+		qApp->installTranslator(m_translator);
+	}
+	else {
+		qWarning() << "Fail load translation for locale" << locale << "pathToLocale" << pathToLocale;
+	}
+}
+
 
 void LightpackApplication::quitFromWizard(int result)
 {

@@ -47,5 +47,6 @@
         <file>text/cast.html</file>
         <file>icons/persist.png</file>
         <file>plugin-template.ini</file>
+        <file>translations/zh_CN.qm</file>
     </qresource>
 </RCC>

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ConfigureDevicePage.cpp
  *
  *	Created on: 11/1/2013
@@ -101,7 +101,18 @@ bool ConfigureDevicePage::validatePage()
 	_transSettings->ledDevice->setColorSequence(field(QStringLiteral("colorFormat")).toString());
 	_transSettings->ledDevice->open();
 
-	return true;
+    return true;
+}
+
+void ConfigureDevicePage::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        return;
+    }
+
+    QWizardPage::changeEvent(event);
+    return;
 }
 
 ConfigureDevicePage::~ConfigureDevicePage()

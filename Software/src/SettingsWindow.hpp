@@ -304,7 +304,7 @@ private:
 
 	QCache<QString, QPixmap> m_pixmapCache;
 
-	QTranslator *m_translator;
+	//QTranslator *m_translator;
 
 	QString m_deviceFirmwareVersion;
 	static const QString DeviceFirmvareVersionUndef;

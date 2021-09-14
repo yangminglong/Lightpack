@@ -31,6 +31,8 @@
 #include "qtsingleapplication.h"
 
 #include <memory>
+#include <QTranslator>
+#include <QMap>
 
 #define getLightpackApp() static_cast<LightpackApplication *>(QCoreApplication::instance())
 
@@ -62,6 +64,9 @@ public:
 		// Append new ErrorCodes here
 		JustEpicFail_ErrorCode					= 93
 	};
+
+	static QMap<QString, QString>& getLanguageMap() { return m_languageMap; };
+	static void loadLanguages(const QString& locale);
 
 signals:
 	void clearColorBuffers();
@@ -139,4 +144,7 @@ private:
 	bool m_isLightsWereOnBeforeLock;
 	bool m_isLightsWereOnBeforeDisplaySleep;
 	bool m_isLightsWereOnBeforeSuspend;
+
+	static QMap<QString, QString> m_languageMap;
+	static QTranslator* m_translator;
 };

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * SettingsWindow.cpp
  *
  *	Created on: 26.07.2010
@@ -154,7 +154,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) :
 	initGrabbersRadioButtonsVisibility();
 	initLanguages();
 
-	loadTranslation(Settings::getLanguage());
+	//loadTranslation(Settings::getLanguage());
 
 	if (Settings::isBacklightEnabled())
 	{
@@ -386,7 +386,7 @@ void SettingsWindow::changeEvent(QEvent *e)
 		ui->listWidget->setCurrentRow(currentPage);
 
 
-		ui->comboBox_Language->setItemText(0, tr("System default"));
+		//ui->comboBox_Language->setItemText(0, tr("System default"));
 
 		updateStatusBar();
 
@@ -1784,80 +1784,31 @@ void SettingsWindow::initLanguages()
 
 	ui->comboBox_Language->clear();
 	ui->comboBox_Language->addItem(tr("System default"));
-	ui->comboBox_Language->addItem(QStringLiteral("English"));
-	ui->comboBox_Language->addItem(QStringLiteral("Russian"));
-	ui->comboBox_Language->addItem(QStringLiteral("Ukrainian"));
+
+	QMap<QString, QString> languageMap = LightpackApplication::getLanguageMap();
+
+	for (const QString& key : languageMap.keys()) {
+		ui->comboBox_Language->addItem(languageMap[key]);
+	}
 
 	int langIndex = 0; // "System default"
 	QString langSaved = Settings::getLanguage();
-	if(langSaved != QStringLiteral("<System>")){
-		langIndex = ui->comboBox_Language->findText(langSaved);
+	if(langSaved != QLocale::system().name()){
+		langIndex = ui->comboBox_Language->findText(languageMap[langSaved]);
 	}
 	ui->comboBox_Language->setCurrentIndex(langIndex);
-
-	m_translator = NULL;
 }
 
 void SettingsWindow::loadTranslation(const QString & language)
 {
-	DEBUG_LOW_LEVEL << Q_FUNC_INFO << language;
+	QMap<QString, QString> languageMap = LightpackApplication::getLanguageMap();
 
-	QString settingsLanguage = language;
-
-	QString locale = QLocale::system().name();
-
-	// add translation to Lightpack.pro TRANSLATIONS
-	// lupdate Lightpack.pro
-	// open linguist and translate application
-	// lrelease Lightpack.pro
-	// add new language to LightpackResources.qrc :/translations/
-	// add new language to MainWindow::initLanguages() function
-	// and only when all this done - append new line
-	// locale - name of translation binary file form resources: %locale%.qm
-	if(ui->comboBox_Language->currentIndex() == 0 /* System */){
-		settingsLanguage = SettingsScope::Main::LanguageDefault;
-		DEBUG_LOW_LEVEL << "System locale" << locale;
-
-		if (locale.startsWith(QStringLiteral("en_"))) locale = QStringLiteral("en_EN"); // :/translations/en_EN.qm
-		else if (locale.startsWith(QStringLiteral("ru_"))) locale = QStringLiteral("ru_RU"); // :/translations/ru_RU.qm
-		else if (locale.startsWith(QStringLiteral("uk_"))) locale = QStringLiteral("uk_UA"); // :/translations/uk_UA.qm
-
-		DEBUG_LOW_LEVEL << "System translation" << locale;
-	}
-	else if (language == QStringLiteral("English")) locale = QStringLiteral("en_EN"); // :/translations/en_EN.qm
-	else if (language == QStringLiteral("Russian")) locale = QStringLiteral("ru_RU"); // :/translations/ru_RU.qm
-	else if (language == QStringLiteral("Ukrainian")) locale = QStringLiteral("uk_UA"); // :/translations/uk_UA.qm
-	// append line for new language/locale here
-	else {
-		qWarning() << "Language" << language << "not found. Set to default" << SettingsScope::Main::LanguageDefault;
-		DEBUG_LOW_LEVEL << "System locale" << locale;
-
-		settingsLanguage = SettingsScope::Main::LanguageDefault;
-	}
-
-	Settings::setLanguage(settingsLanguage);
-
-	const QString pathToLocale = QStringLiteral(":/translations/%1").arg(locale);
-
-	if(m_translator != NULL){
-		qApp->removeTranslator(m_translator);
-		delete m_translator;
-		m_translator = NULL;
-	}
-
-	if(locale == QStringLiteral("en_EN") /* default no need to translate */){
-		DEBUG_LOW_LEVEL << "Translation removed, using default locale" << locale;
-		return;
-	}
+	QString locale = languageMap.key(language, QLocale::system().name());
 
 	updatingFromSettings = true;
-	m_translator = new QTranslator();
-	if(m_translator->load(pathToLocale)){
-		DEBUG_LOW_LEVEL << Q_FUNC_INFO << "Load translation for locale" << locale;
-		qApp->installTranslator(m_translator);
-	}else{
-		qWarning() << "Fail load translation for locale" << locale << "pathToLocale" << pathToLocale;
-	}
+	LightpackApplication::loadLanguages(locale);
+	Settings::setLanguage(locale);
+
 	updatingFromSettings = false;
 }
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * D3D10Grabber.cpp
  *
  *	Created on: 29.05.2012
@@ -48,6 +48,7 @@
 #include "../common/msvcstub.h"
 #include <D3D10_1.h>
 #include <D3D10.h>
+#include <chrono>
 
 #define SIZEOF_ARRAY(a) (sizeof(a)/sizeof(a[0]))
 
@@ -371,14 +372,14 @@ public:
 
 		using namespace std::chrono_literals;
 		m_processesScanAndInfectTimer.reset(new QTimer(this));
-		m_processesScanAndInfectTimer->setInterval(5s);
+        m_processesScanAndInfectTimer->setInterval(5s);
 		m_processesScanAndInfectTimer->setSingleShot(false);
 		connect(m_processesScanAndInfectTimer.data(), &QTimer::timeout, m_injector.data(), &D3D10GrabberInjector::infectCleanDxProcesses);
 		m_processesScanAndInfectTimer->start();
 
 		m_checkIfFrameGrabbedTimer.reset(new QTimer(this));
 		m_checkIfFrameGrabbedTimer->setSingleShot(false);
-		m_checkIfFrameGrabbedTimer->setInterval(1s);
+        m_checkIfFrameGrabbedTimer->setInterval(1s);
 		connect(m_checkIfFrameGrabbedTimer.data(), &QTimer::timeout, this, &D3D10GrabberImpl::handleIfFrameGrabbed);
 		m_checkIfFrameGrabbedTimer->start();
 		m_isInited = true;

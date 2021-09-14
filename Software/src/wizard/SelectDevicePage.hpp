@@ -1,4 +1,4 @@
-/*
+﻿/*
  * SelectDevicePage.hpp
  *
  *	Created on: 11/1/2013
@@ -27,6 +27,7 @@
 #ifndef SELECTDEVICEPAGE_HPP
 #define SELECTDEVICEPAGE_HPP
 
+#include <QEvent>
 #include <QWizardPage>
 #include "SettingsAwareTrait.hpp"
 
@@ -49,6 +50,8 @@ protected:
 	void cleanupPage();
 	bool validatePage();
 
+protected:
+    void changeEvent(QEvent *event);
 private:
 	Ui::SelectDevicePage *ui;
 };

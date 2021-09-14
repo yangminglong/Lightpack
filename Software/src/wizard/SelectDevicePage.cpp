@@ -1,4 +1,4 @@
-/*
+﻿/*
  * SelectDevicePage.cpp
  *
  *	Created on: 11/1/2013
@@ -82,7 +82,18 @@ bool SelectDevicePage::validatePage()
 	if (field(QStringLiteral("isVirtual")).toBool()) {
 		_transSettings->ledDevice.reset(new LedDeviceVirtual());
 	}
-	return true;
+    return true;
+}
+
+void SelectDevicePage::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        return;
+    }
+
+    QWizardPage::changeEvent(event);
+    return;
 }
 
 int SelectDevicePage::nextId() const

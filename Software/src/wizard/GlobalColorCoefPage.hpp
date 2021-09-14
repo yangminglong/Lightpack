@@ -1,4 +1,4 @@
-/*
+﻿/*
  * GlobalColorCoefPage.hpp
  *
  *	Created on: 15.2.2017
@@ -27,6 +27,7 @@
 #ifndef GLOBALCOLORCOEFPAGE_HPP
 #define GLOBALCOLORCOEFPAGE_HPP
 
+#include <QEvent>
 #include <QList>
 #include <QTimer>
 #include "WizardPageUsingDevice.hpp"
@@ -49,6 +50,8 @@ protected:
 	virtual void initializePage();
 	virtual void cleanupPage();
 	virtual bool validatePage();
+protected:
+    void changeEvent(QEvent *event);
 
 private slots:
 	void onCoefValueChanged(int value);

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ConfigureUdpDevicePage.cpp
  *
  *	Created on: 15/02/2020
@@ -36,8 +36,8 @@
 
 using namespace SettingsScope;
 
-ConfigureUdpDevicePage::ConfigureUdpDevicePage(bool isInitFromSettings, TransientSettings *ts, QWidget *parent):
-	QWizardPage(parent),
+ConfigureUdpDevicePage::ConfigureUdpDevicePage(bool isInitFromSettings, TransientSettings *ts, QWidget *parent)
+	: QWizardPage(parent),
 	SettingsAwareTrait(isInitFromSettings, ts),
 	ui(new Ui::ConfigureUdpDevicePage)
 {
@@ -107,7 +107,18 @@ bool ConfigureUdpDevicePage::validatePage()
 	}
 	_transSettings->ledDevice->open();
 
-	return true;
+    return true;
+}
+
+void ConfigureUdpDevicePage::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        return;
+    }
+
+    QWizardPage::changeEvent(event);
+    return;
 }
 
 ConfigureUdpDevicePage::~ConfigureUdpDevicePage()

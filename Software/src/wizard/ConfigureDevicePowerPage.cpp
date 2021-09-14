@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ConfigureDevicePowerPage.cpp
  *
  *	Created on: 15/02/2020
@@ -98,7 +98,18 @@ bool ConfigureDevicePowerPage::validatePage()
 	_transSettings->ledDevice->setLedMilliAmps(ledMilliAmps);
 	_transSettings->ledDevice->setPowerSupplyAmps(powerSupplyAmps);
 
-	return true;
+    return true;
+}
+
+void ConfigureDevicePowerPage::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        return;
+    }
+
+    QWizardPage::changeEvent(event);
+    return;
 }
 
 ConfigureDevicePowerPage::~ConfigureDevicePowerPage()

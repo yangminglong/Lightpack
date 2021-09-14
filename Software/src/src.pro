@@ -28,6 +28,7 @@ MOC_DIR     = stuff
 UI_DIR      = stuff
 RCC_DIR     = stuff
 
+
 # Find currect git revision
 GIT_REVISION = $$system(git show -s --format="%h")
 
@@ -43,11 +44,13 @@ isEmpty( GIT_REVISION ){
 } else {
     # Define current mercurial revision id
     # It will be show in about dialog and --help output
+    # message("GIT_REVISION :" $${GIT_REVISION})
     DEFINES += GIT_REVISION=\\\"$${GIT_REVISION}\\\"
 }
 
 TRANSLATIONS += ../res/translations/ru_RU.ts \
-       ../res/translations/uk_UA.ts
+                ../res/translations/uk_UA.ts \
+                ../res/translations/zh_CN.ts
 RESOURCES    = ../res/LightpackResources.qrc
 RC_FILE      = ../res/Lightpack.rc
 
@@ -93,10 +96,11 @@ win32 {
         DEFINES += _CRT_SECURE_NO_WARNINGS _CRT_NONSTDC_NO_DEPRECATE
         # Parallel build
         QMAKE_CXXFLAGS += /MP
+        QMAKE_CXXFLAGS += /FS
         # Fix __cplusplus macro as required by Qt
         QMAKE_CXXFLAGS += /Zc:__cplusplus
         # Place *.lib and *.exp files in ../lib
-        QMAKE_LFLAGS += /IMPLIB:..\\lib\\$(TargetName).lib
+        QMAKE_LFLAGS += /IMPLIB:..\\lib\\$${TARGET}.lib
     }
 
     # Windows version using WinAPI for HID

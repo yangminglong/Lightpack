@@ -42,7 +42,7 @@ CONFIG(msvc) {
     QMAKE_CXXFLAGS += /MP
     # Layout changes in the injected dll are potentially harmful (fraps)
     # Place *.lib and *.exp files in ../lib
-    QMAKE_LFLAGS += /INCREMENTAL:NO /IMPLIB:..\\lib\\$(TargetName).lib
+    QMAKE_LFLAGS += /INCREMENTAL:NO /IMPLIB:..\\lib\\$${TARGET}.lib
 } else {
     QMAKE_LFLAGS += -static
 }

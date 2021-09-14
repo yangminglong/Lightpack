@@ -25,5 +25,5 @@ echo.
 
 echo.
 
-exit 0
+
 

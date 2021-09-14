@@ -1,4 +1,4 @@
-/*
+﻿/*
  * LightpacksDiscoveryPage.hpp
  *
  *	Created on: 10/23/2013
@@ -27,6 +27,7 @@
 #ifndef LIGHTPACKSDISCOVERYPAGE_HPP
 #define LIGHTPACKSDISCOVERYPAGE_HPP
 
+#include <QEvent>
 #include <QWizardPage>
 #include "SettingsAwareTrait.hpp"
 
@@ -47,6 +48,8 @@ protected:
 	virtual bool validatePage();
 	virtual int nextId() const;
 
+protected:
+    void changeEvent(QEvent *event);
 private:
 
 	Ui::LightpacksDiscoveryPage *_ui;

@@ -6,18 +6,18 @@
 #------------------------------------------------------------------------------
 win32 {
 	# Set this to -Win32 for 32-bit
-	OPENSSL_DIR = "C:\\OpenSSL-Win64\\bin"
+	OPENSSL_DIR = "F:\\projects\\git\\Lightpack\\3rd\\OpenSSL\\Win_x64\\bin"
 	# Set this to run without openssl. The updatecheck won't work.
 	# DEFINES += NO_OPENSSL
 
 	# optional: BASS library directory, for sound visualization (http://www.un4seen.com/)
 	DEFINES += BASS_SOUND_SUPPORT
-	BASS_DIR = "C:\\bass"
-	BASSWASAPI_DIR = "C:\\bass\\wasapi"
+	BASS_DIR = "F:\\projects\\git\\Lightpack\\3rd\\bass24"
+	BASSWASAPI_DIR = "F:\\projects\\git\\Lightpack\\3rd\\basswasapi24"
 
 	# optional: Night Light support, x86_64 only (https://github.com/zomfg/NightLightLibrary/releases)
 	DEFINES += NIGHTLIGHT_SUPPORT
-	NIGHTLIGHT_DIR = C:\\NightLightLibrary
+	NIGHTLIGHT_DIR = "F:\\projects\\git\\Lightpack\\3rd\\NightLightLibrary-x64-1.2"
 
 	# Set this to x86 to compile 32-bit
 	TARGET_ARCH = x86_64

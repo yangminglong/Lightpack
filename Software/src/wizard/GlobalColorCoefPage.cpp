@@ -1,4 +1,4 @@
-/*
+﻿/*
  * MonitorsConfigurationPage.cpp
  *
  *	Created on: 15.2.2017
@@ -168,7 +168,18 @@ bool GlobalColorCoefPage::validatePage()
 	}
 
 	cleanupPage();
-	return true;
+    return true;
+}
+
+void GlobalColorCoefPage::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        _ui->retranslateUi(this);
+        return;
+    }
+
+    QWizardPage::changeEvent(event);
+    return;
 }
 
 void GlobalColorCoefPage::cleanupPage()

@@ -35,7 +35,7 @@ CONFIG(msvc) {
     # Parallel build
     QMAKE_CXXFLAGS += /MP
     # Place *.lib and *.exp files in ../lib
-    QMAKE_LFLAGS += /IMPLIB:..\\lib\\$(TargetName).lib
+    QMAKE_LFLAGS += /IMPLIB:..\\lib\\$${TARGET}.lib
 } else {
     QMAKE_LFLAGS += -static
 }

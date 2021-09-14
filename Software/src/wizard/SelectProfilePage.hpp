@@ -1,4 +1,4 @@
-/*
+﻿/*
  * SelectProfilePage.hpp
  *
  *	Created on: 11/1/2013
@@ -27,6 +27,7 @@
 #ifndef SELECTPROFILEPAGE_HPP
 #define SELECTPROFILEPAGE_HPP
 
+#include <QEvent>
 #include <QWizardPage>
 #include "SettingsAwareTrait.hpp"
 
@@ -45,6 +46,9 @@ public:
 protected:
 	void initializePage();
 	bool validatePage();
+
+protected:
+    void changeEvent(QEvent *event);
 
 private slots:
 	void onAddProfile_clicked();

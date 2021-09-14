@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ZoneConfiguration.cpp
  *
  *	Created on: 10/25/2013
@@ -231,7 +231,18 @@ bool ZonePlacementPage::validatePage()
 	}
 
 	cleanupPage();
-	return true;
+    return true;
+}
+
+void ZonePlacementPage::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        _ui->retranslateUi(this);
+        return;
+    }
+
+    WizardPageUsingDevice::changeEvent(event);
+    return;
 }
 
 void ZonePlacementPage::resetNewAreaRect()

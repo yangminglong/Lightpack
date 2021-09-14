@@ -1,4 +1,4 @@
-/*
+﻿/*
 * ZoneConfiguration.cpp
 *
 *	Created on: 16.2.2017
@@ -111,5 +111,7 @@ void WizardPageUsingDevice::turnLightsOff()
 void WizardPageUsingDevice::turnLightsOff(int value)
 {
 	Q_UNUSED(value)
-	turnLightsOff();
+    turnLightsOff();
 }
+
+

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * MonitorIdForm.hpp
  *
  *	Created on: 10/23/2013
@@ -27,6 +27,7 @@
 #ifndef MONITORIDFORM_HPP
 #define MONITORIDFORM_HPP
 
+#include <QEvent>
 #include <QWidget>
 
 namespace Ui {
@@ -42,6 +43,8 @@ public:
 	~MonitorIdForm();
 	void setActive(const bool);
 
+protected:
+    void changeEvent(QEvent *event);
 private:
 	Ui::MonitorIdForm *_ui;
 	QColor _fgColor;

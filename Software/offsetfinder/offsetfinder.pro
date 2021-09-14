@@ -19,6 +19,8 @@ include(../build-config.prf)
 # The offsetfinder is used to get the x86 offsets when running as x64
 QMAKE_TARGET.arch = x86
 
+LIBS += -lshlwapi -ladvapi32 -luser32
+
 CONFIG(msvc) {
     # This will suppress many MSVC warnings about 'unsecure' CRT functions.
     DEFINES += _CRT_SECURE_NO_WARNINGS _CRT_NONSTDC_NO_DEPRECATE

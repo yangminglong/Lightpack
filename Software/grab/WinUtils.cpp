@@ -1,4 +1,4 @@
-/*
+﻿/*
  * WinUtils.cpp
  *
  *	Created on: 25.07.11
@@ -33,6 +33,7 @@
 #include <psapi.h>
 #include <tlhelp32.h>
 #include <shlwapi.h>
+#include <time.h>
 
 #include "../src/debug.h"
 

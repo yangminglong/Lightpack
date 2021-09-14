@@ -1,5 +1,5 @@
 REM call this from $repo/Software
-%QTDIR%\bin\qmake -recursive -tp vc Lightpack.pro
+D:\Qt\Qt5.15.1\5.15.1\msvc2019_64\bin\qmake -recursive -tp vc Lightpack.pro
 
 REM qmake only allows shared linkage of the msvcr* runtime (for reasons acceptable when using Qt in the projects)
 REM for our lightweiht, non-qt components which we want to inject into other processes this is bad

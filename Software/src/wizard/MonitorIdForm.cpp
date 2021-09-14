@@ -1,4 +1,4 @@
-/*
+﻿/*
  * MonitorIdForm.cpp
  *
  *	Created on: 10/23/2013
@@ -75,5 +75,16 @@ void MonitorIdForm::setActive(const bool active)
 
 	QPalette palette = _ui->label->palette();
 	palette.setBrush(QPalette::WindowText, active ? QBrush(linearGrad) : QBrush(_fgColor));
-	_ui->label->setPalette(palette);
+    _ui->label->setPalette(palette);
+}
+
+void MonitorIdForm::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange) {
+        _ui->retranslateUi(this);
+        return;
+    }
+
+    QWidget::changeEvent(event);
+    return;
 }

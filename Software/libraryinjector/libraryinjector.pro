@@ -21,7 +21,7 @@ CONFIG(msvc) {
     # Parallel build
     QMAKE_CXXFLAGS += /MP
     # Add export definition for COM methods and place *.lib and *.exp files in ../lib
-    QMAKE_LFLAGS += /DEF:"LibraryInjector.def" /IMPLIB:..\\lib\\$(TargetName).lib
+    QMAKE_LFLAGS += /DEF:"$${PWD}/LibraryInjector.def" /IMPLIB:..\\lib\\$${TARGET}.lib
 } else {
     QMAKE_LFLAGS +=-Wl,--kill-at
 }

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ZoneConfiguration.hpp
  *
  *	Created on: 10/25/2013
@@ -27,6 +27,7 @@
 #ifndef ZONECONFIGURATION_HPP
 #define ZONECONFIGURATION_HPP
 
+#include <QEvent>
 #include <QTimer>
 #include "WizardPageUsingDevice.hpp"
 #include "SettingsAwareTrait.hpp"
@@ -54,6 +55,9 @@ protected:
 	void initializePage();
 	void cleanupPage();
 	bool validatePage();
+
+protected:
+    void changeEvent(QEvent *event);
 
 private slots:
 	void onAndromeda_clicked();

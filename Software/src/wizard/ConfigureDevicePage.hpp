@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ConfigureDevicePage.hpp
  *
  *	Created on: 11/1/2013
@@ -46,6 +46,8 @@ protected:
 	void initializePage();
 	void cleanupPage();
 	bool validatePage();
+protected:
+    void changeEvent(QEvent *event);
 
 private:
 	Ui::ConfigureDevicePage *ui;
