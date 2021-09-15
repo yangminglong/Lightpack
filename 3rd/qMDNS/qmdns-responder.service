@@ -1,0 +1,12 @@
+[Unit]
+Description=A simple mDNS responder
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/qmdns-responder
+
+[Install]
+WantedBy=multi-user.target
+
+
