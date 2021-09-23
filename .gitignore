@@ -77,3 +77,4 @@ build-*-*/
 Software/Lightpack.VC.db
 *.db
 Software/Lightpack.VC.db
+build/
